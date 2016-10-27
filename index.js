@@ -6,7 +6,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-// Need to change POST code
 
 var courses = {
     "physics":   [  { "fname": "Adi", "lname": "GaL","id": 1},
@@ -104,22 +103,9 @@ app.post('*', function (req, res, next) {
     next();
 });
 app.post('/:subject', function (req, res) {
-
-    //console.log(req.params.subject);
-    //console.log(req.body);
-
-    if (req.params.subject == 'physics') {
-        physics.push({id: req.body.id, fname: req.body.fname, lname: req.body.lname});
-        res.end (JSON.stringify(physics));
-    } else if (req.params.subject == 'chemistry') {
-        chemistry.push({id: req.body.id, fname: req.body.fname, lname: req.body.lname});
-        res.end (JSON.stringify(chemistry));
-    } else if (req.params.subject == 'biology') {
-        biology.push({id: req.body.id, fname: req.body.fname, lname: req.body.lname});
-        res.end (JSON.stringify(biology));
-    } else {
-
-    }
+    // Make sure that we got one of the three expected subjects. Otherwise error
+    courses[req.params.subject].push({id: req.body.id, fname: req.body.fname, lname: req.body.lname});
+    res.end(JSON.stringify(courses[req.params.subject]));
 });
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
@@ -132,7 +118,6 @@ TODO:
 
 . Deploy this server to Heroku
 . Persist using a postgres database
-. Get PUT, POST working
 . Improve code
 . Add error handling
 . Make this into a TS server (from a JS server)
