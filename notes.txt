@@ -1,0 +1,16 @@
+http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WBOSqeErLRY has good instructions. May not be at the beginner level.
+
+https://blog.risingstack.com/node-js-database-tutorial/
+http://alexpetralia.com/posts/2016/6/8/you-should-be-using-dbeaver
+
+TO RUN
+
+. node index.js from practice-driver1 folder
+
+TO DO
+
+. Parametrized sql
+
+STATUS 10/29/2016
+
+. My sql and server are tightly coupled. It looks like they communicate via http in the mherman example.
